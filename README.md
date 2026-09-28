@@ -57,6 +57,7 @@ connection attempts from any IPv4 address.
 3. Remove `0.0.0.0/0` access from TCP port 22.
 4. Restrict SSH to an approved administrative IP/CIDR range.
 5. Re-run the evidence collector.
+   
 **Validation:**  
 The control returns PASS when unrestricted SSH access is no
 longer detected.
