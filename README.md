@@ -12,10 +12,55 @@ Instead of relying on manual screenshot capturing or quarterly manual CSV export
 
 ---
 
-## 🏛️ Framework Mapping Methodology & Disclaimer
+ ## 🔎 From Evidence to Resolution
 
-> **GRC Engineering Note:** Framework mappings in this project are illustrative engineering mappings intended to demonstrate how automated runtime state evaluations satisfy continuous monitoring controls. They are not intended to represent an official AICPA, ISO, NIST, or PCI DSS control crosswalk or audit opinion.
+The goal of this project is not only to identify security
+configuration issues, but to translate technical findings into
+actionable GRC outcomes.
 
+Each finding follows a repeatable lifecycle:
+
+AWS Configuration
+        ↓
+Evidence Collection
+        ↓
+Security Finding
+        ↓
+Risk Identification
+        ↓
+Framework Mapping
+        ↓
+Path to Resolution
+        ↓
+Remediation
+        ↓
+Validation
+
+### Example: Public SSH Exposure
+
+**Finding:**  
+An EC2 Security Group allows inbound SSH (TCP/22) from
+`0.0.0.0/0`.
+
+**Risk:**  
+Public SSH exposure increases the attack surface and allows
+connection attempts from any IPv4 address.
+
+**Framework Mapping:**
+- NIST SP 800-53: AC-17 / SC-7
+- ISO/IEC 27001:2022: A.8.20
+- PCI DSS v4.0: Requirement 1.3
+
+**Path to Resolution:**
+1. Identify the affected Security Group.
+2. Review inbound rules.
+3. Remove `0.0.0.0/0` access from TCP port 22.
+4. Restrict SSH to an approved administrative IP/CIDR range.
+5. Re-run the evidence collector.
+
+**Validation:**  
+The control returns PASS when unrestricted SSH access is no
+longer detected.
 ---
 
 ## 🛡️ 1. Control Mapping Matrix
